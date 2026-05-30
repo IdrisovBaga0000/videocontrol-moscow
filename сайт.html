@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Видеоконтроль — Монтаж и обслуживание систем видеонаблюдения | Самозанятый</title>
+    
+    <!-- SEO мета-теги -->
+    <meta name="description" content="Профессиональный монтаж видеонаблюдения в Москве. Самозанятый специалист Идрисов Б.А., ИНН 050801431603. Работаю по договору, предоставляю закрывающие документы.">
+    <meta name="keywords" content="видеонаблюдение, монтаж камер, обслуживание, Москва, самозанятый, ИНН 050801431603, Идрисов">
+    
+    <!-- Предзагрузка шрифта для ускорения -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #0f2027;
+            --primary-light: #1a3447;
+            --accent: #00d2ff;
+            --accent-hover: #00b8e6;
+            --white: #ffffff;
+            --light-bg: #f4f6f9;
+            --card-bg: #f8fafc;
+            --text: #2c3e50;
+            --text-muted: #7f8c8d;
+            --border: #e2e8f0;
+            --success: #27ae60;
+            --shadow-sm: 0 4px 12px rgba(0,0,0,0.04);
+            --shadow-md: 0 10px 30px rgba(0,0,0,0.08);
+            --shadow-lg: 0 20px 50px rgba(0,0,0,0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 clamp(16px, 4vw, 24px);
+        }
+
+        /* ========================================
+           ЛОГОТИП SVG
+        ======================================== */
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: clamp(10px, 2vw, 14px);
+            flex-shrink: 0;
+        }
+        .logo-icon {
+            width: clamp(44px, 8vw, 56px);
+            height: clamp(44px, 8vw, 56px);
+            filter: drop-shadow(0 0 16px rgba(0, 210, 255, 0.5));
+            transition: filter 0.3s ease;
+        }
+        .logo-icon:hover {
+            filter: drop-shadow(0 0 24px rgba(0, 210, 255, 0.8));
+        }
+        .logo-text-block {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .logo-title {
+            font-size: clamp(1.2rem, 3.5vw, 1.7rem);
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--white);
+            line-height: 1.1;
+            white-space: nowrap;
+        }
+        .logo-subtitle {
+            color: var(--accent);
+            font-weight: 500;
+            letter-spacing: 2.5px;
+            font-size: clamp(0.65rem, 1.5vw, 0.75rem);
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        /* ========================================
+           HEADER
+        ======================================== */
+        header {
+            background: linear-gradient(145deg, #0a1922 0%, #112333 40%, #1a3447 100%);
+            color: var(--white);
+            padding: clamp(20px, 4vw, 28px) 0 clamp(50px, 10vw, 80px);
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: clamp(300px, 50vw, 500px);
+            height: clamp(300px, 50vw, 500px);
+            background: radial-gradient(circle, rgba(0,210,255,0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: clamp(30px, 8vw, 60px);
+            position: relative;
+            z-index: 2;
+        }
+        .contact-pills {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .pill {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            padding: clamp(8px, 1.5vw, 10px) clamp(14px, 2.5vw, 20px);
+            border-radius: 40px;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.25s ease;
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 500;
+            font-size: clamp(0.8rem, 1.6vw, 0.95rem);
+            white-space: nowrap;
+        }
+        .pill:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        .pill-icon {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            font-style: normal;
+            flex-shrink: 0;
+        }
+
+        /* Hero */
+        .hero-grid {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: clamp(30px, 6vw, 50px);
+            position: relative;
+            z-index: 2;
+        }
+        .hero-content {
+            flex: 1 1 380px;
+            min-width: min(100%, 380px);
+        }
+        .hero-content h2 {
+            font-size: clamp(1.6rem, 5vw, 2.7rem);
+            font-weight: 700;
+            margin-bottom: clamp(14px, 3vw, 20px);
+            line-height: 1.2;
+        }
+        .hero-content p {
+            font-size: clamp(0.95rem, 2vw, 1.15rem);
+            opacity: 0.9;
+            margin-bottom: clamp(20px, 4vw, 32px);
+            font-weight: 400;
+            max-width: 550px;
+        }
+        .btn-primary {
+            display: inline-block;
+            background: var(--accent);
+            color: #0a1922;
+            padding: clamp(14px, 2.5vw, 16px) clamp(28px, 5vw, 38px);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: clamp(0.9rem, 1.8vw, 1.05rem);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 12px 24px rgba(0, 210, 255, 0.3);
+            text-align: center;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 35px rgba(0, 210, 255, 0.5);
+            background: #ffffff;
+            color: #0a1922;
+        }
+        .hero-visual {
+            flex: 1 1 300px;
+            min-width: min(100%, 300px);
+            text-align: center;
+        }
+        .hero-visual img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: clamp(16px, 3vw, 24px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.45);
+            margin: 0 auto;
+            object-fit: cover;
+            aspect-ratio: 4/3;
+        }
+
+        /* ========================================
+           SECTIONS
+        ======================================== */
+        .section {
+            padding: clamp(50px, 10vw, 80px) 0;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: clamp(36px, 6vw, 56px);
+        }
+        .section-title h3 {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .section-title p {
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 6px;
+            font-size: clamp(0.85rem, 1.8vw, 1rem);
+        }
+
+        /* Преимущества */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+            gap: clamp(16px, 3vw, 28px);
+        }
+        .card {
+            background: var(--white);
+            padding: clamp(24px, 4vw, 32px) clamp(18px, 3vw, 24px);
+            border-radius: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent);
+        }
+        .card-icon {
+            font-size: clamp(2.2rem, 5vw, 2.8rem);
+            margin-bottom: 18px;
+        }
+        .card h4 {
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-size: clamp(1rem, 2vw, 1.1rem);
+        }
+        .card p {
+            font-size: clamp(0.85rem, 1.6vw, 0.95rem);
+            color: var(--text-muted);
+        }
+
+        /* ========================================
+           КОНТАКТЫ
+        ======================================== */
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+            gap: clamp(20px, 4vw, 40px);
+            align-items: start;
+        }
+        .contact-card {
+            background: var(--white);
+            padding: clamp(20px, 3vw, 28px);
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 20px;
+        }
+        .contact-card h4 {
+            margin-bottom: 16px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: clamp(1rem, 2vw, 1.1rem);
+        }
+        .messenger-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .msg-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 14px;
+            background: #f1f5f9;
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: all 0.25s ease;
+            font-size: clamp(0.85rem, 1.6vw, 0.95rem);
+        }
+        .msg-link:hover {
+            background: #e2e8f0;
+        }
+        .msg-link.telegram:hover { background: #e0f2fe; color: #0088cc; }
+        .msg-link.whatsapp:hover { background: #dcfce7; color: #25D366; }
+        .msg-icon {
+            font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+            font-style: normal;
+            flex-shrink: 0;
+        }
+        .big-phone {
+            font-size: clamp(1.3rem, 3vw, 1.6rem);
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            word-break: break-all;
+        }
+        .map-placeholder {
+            background: #e9ecef;
+            border-radius: 20px;
+            min-height: clamp(250px, 40vw, 320px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: var(--text-muted);
+            font-weight: 600;
+            border: 2px dashed #b2bec3;
+            text-align: center;
+            padding: 20px;
+        }
+        .map-placeholder span {
+            font-size: clamp(2rem, 5vw, 2.8rem);
+        }
+
+        /* ========================================
+           COOKIE BANNER
+        ======================================== */
+        .cookie-banner {
+            position: fixed;
+            bottom: clamp(16px, 3vw, 24px);
+            left: clamp(16px, 3vw, 24px);
+            right: clamp(16px, 3vw, 24px);
+            max-width: 480px;
+            background: var(--primary);
+            color: white;
+            padding: 20px clamp(16px, 3vw, 24px);
+            border-radius: 20px;
+            box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .cookie-banner a {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+        .btn-cookie {
+            background: var(--accent);
+            border: none;
+            color: #000;
+            padding: 10px 28px;
+            border-radius: 40px;
+            font-weight: 700;
+            cursor: pointer;
+            align-self: flex-start;
+            font-family: inherit;
+            font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+        }
+
+        /* ========================================
+           FOOTER
+        ======================================== */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: clamp(24px, 4vw, 32px) 0 clamp(16px, 3vw, 20px);
+            text-align: center;
+            font-size: clamp(0.75rem, 1.4vw, 0.85rem);
+            opacity: 0.95;
+            margin-top: 40px;
+        }
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+            word-break: break-all;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        .footer-links {
+            margin: 8px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px 16px;
+        }
+        .legal-note {
+            margin-top: 16px;
+            font-size: clamp(0.7rem, 1.2vw, 0.8rem);
+            color: #a0aec0;
+            line-height: 1.6;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 10px;
+        }
+        .legal-note strong {
+            color: #ffffff;
+        }
+
+        /* ========================================
+           ДОПОЛНИТЕЛЬНАЯ АДАПТАЦИЯ ДЛЯ МАЛЕНЬКИХ ЭКРАНОВ
+        ======================================== */
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 14px;
+            }
+            .contact-pills {
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+            }
+            .pill {
+                width: 100%;
+                justify-content: flex-start;
+            }
+            .hero-grid {
+                flex-direction: column;
+            }
+            .hero-content {
+                text-align: center;
+            }
+            .hero-content p {
+                max-width: 100%;
+            }
+            .hero-visual img {
+                max-width: 100%;
+            }
+            .btn-primary {
+                display: block;
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-title {
+                font-size: 1rem;
+            }
+            .logo-subtitle {
+                font-size: 0.6rem;
+                letter-spacing: 1.5px;
+            }
+            .hero-content h2 {
+                font-size: 1.4rem;
+            }
+            .section-title h3 {
+                font-size: 1.3rem;
+            }
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+            .contacts-grid {
+                grid-template-columns: 1fr;
+            }
+            .cookie-banner {
+                left: 8px;
+                right: 8px;
+                bottom: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cookie уведомление (Закон 152-ФЗ) -->
+    <div id="cookieConsent" class="cookie-banner">
+        <div>
+            <strong>🍪 Файлы cookie</strong><br>
+            Этот сайт использует технические cookie для корректной работы. 
+            Продолжая пользоваться сайтом, вы соглашаетесь с 
+            <a href="#privacy" onclick="openPrivacy()">политикой обработки персональных данных</a>.
+        </div>
+        <button class="btn-cookie" onclick="document.getElementById('cookieConsent').style.display = 'none'">Принимаю</button>
+    </div>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <!-- ЛОГОТИП -->
+                <div class="logo-wrapper">
+                    <svg class="logo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-label="Логотип Видеоконтроль">
+                        <defs>
+                            <linearGradient id="gradShield" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#00d2ff"/>
+                                <stop offset="100%" stop-color="#0066ff"/>
+                            </linearGradient>
+                            <linearGradient id="gradLens" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#ffffff"/>
+                                <stop offset="100%" stop-color="#e0f2fe"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M50 8 L85 22 L85 52 C85 72 70 88 50 95 C30 88 15 72 15 52 L15 22 Z" fill="url(#gradShield)"/>
+                        <path d="M50 15 L78 27 L78 52 C78 68 66 82 50 88 C34 82 22 68 22 52 L22 27 Z" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+                        <circle cx="50" cy="48" r="24" fill="#0f2027" stroke="#ffffff" stroke-width="2"/>
+                        <circle cx="50" cy="48" r="18" fill="none" stroke="#00d2ff" stroke-width="3"/>
+                        <circle cx="50" cy="48" r="14" fill="url(#gradLens)" stroke="#0066ff" stroke-width="1.5"/>
+                        <path d="M50 34 L50 62 M36 48 L64 48 M40 38 L60 58 M40 58 L60 38" stroke="#0f2027" stroke-width="2" opacity="0.6"/>
+                        <circle cx="50" cy="48" r="6" fill="#0f2027"/>
+                        <circle cx="50" cy="48" r="3" fill="#00d2ff"/>
+                        <circle cx="43" cy="40" r="3" fill="white" opacity="0.8"/>
+                        <path d="M50 13 L53 20 L60 20 L55 25 L57 32 L50 27 L43 32 L45 25 L40 20 L47 20 Z" fill="#ffffff" opacity="0.9"/>
+                    </svg>
+                    <div class="logo-text-block">
+                        <span class="logo-title">ВИДЕОКОНТРОЛЬ</span>
+                        <span class="logo-subtitle">Системы безопасности</span>
+                    </div>
+                </div>
+                <!-- Контакты -->
+                <div class="contact-pills">
+                    <a href="tel:+79309988267" class="pill" aria-label="Позвонить по телефону">
+                        <i class="pill-icon">📞</i> +7 (930) 998-82-67
+                    </a>
+                    <a href="mailto:video.kontrol@internet.ru" class="pill" aria-label="Написать на почту">
+                        <i class="pill-icon">✉️</i> video.kontrol@internet.ru
+                    </a>
+                </div>
+            </div>
+            <!-- Hero -->
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <h2>Видеонаблюдение под ключ в Москве</h2>
+                    <p>Проектирование, установка, настройка и обслуживание камер видеонаблюдения.</p>
+                    <a href="#contacts" class="btn-primary">Связаться со мной</a>
+                </div>
+                <div class="hero-visual">
+                    <img src="https://images.unsplash.com/photo-1557324232-b8917d3c3dcb?w=600&auto=format&fit=crop" 
+                         alt="Профессиональная камера видеонаблюдения" 
+                         loading="eager">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ПРЕИМУЩЕСТВА -->
+    <section class="section" style="background: var(--white);">
+        <div class="container">
+            <div class="section-title">
+                <h3>Почему выбирают меня</h3>
+                <p>Частный мастер с персональной ответственностью</p>
+            </div>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">📹</div>
+                    <h4>Современные камеры</h4>
+                    <p>IP и AHD оборудование 4К. Подбираю под задачу и бюджет.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📱</div>
+                    <h4>Удалённый доступ</h4>
+                    <p>Настройка просмотра на смартфоне из любой точки мира.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🛡️</div>
+                    <h4>Гарантия 12 месяцев</h4>
+                    <p>Бесплатное обслуживание и поддержка в течение года.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📄</div>
+                    <h4>Закрывающие документы</h4>
+                    <p>Предоставляем все документы, в том числе и бухгалтерские закрывающие документы.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- КОНТАКТЫ -->
+    <section id="contacts" class="section" style="background: var(--light-bg);">
+        <div class="container">
+            <div class="section-title">
+                <h3>Контакты и адрес</h3>
+                <p>Свяжитесь любым удобным способом</p>
+            </div>
+            <div class="contacts-grid">
+                <div>
+                    <div class="contact-card">
+                        <h4>📍 Офис продаж и встреч</h4>
+                        <p style="font-weight: 600; font-size: clamp(1rem, 2vw, 1.1rem);">ул. Летчика Ульянина, д.7</p>
+                        <p>Офис 524 (5 этаж)</p>
+                        <p style="color: var(--text-muted); margin-top: 12px;">⏰ По договорённости (обычно Пн–Сб 10:00–19:00)</p>
+                    </div>
+                    <div class="contact-card">
+                        <h4>📞 Телефон и почта</h4>
+                        <a href="tel:+79309988267" class="big-phone">+7 (930) 998-82-67</a>
+                        <p style="margin-top: 8px;">
+                            <a href="mailto:video.kontrol@internet.ru" style="color: var(--text); text-decoration: underline;">video.kontrol@internet.ru</a>
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <div class="contact-card">
+                        <h4>💬 Мессенджеры</h4>
+                        <div class="messenger-links">
+                            <a href="https://t.me/video_kontrol777" target="_blank" rel="noopener noreferrer" class="msg-link telegram" aria-label="Написать в Telegram">
+                                <i class="msg-icon">✈️</i>
+                                <div><strong>Telegram</strong><br><small>@video_kontrol777</small></div>
+                            </a>
+                            <a href="https://wa.me/79309988267" target="_blank" rel="noopener noreferrer" class="msg-link whatsapp" aria-label="Написать в WhatsApp">
+                                <i class="msg-icon">💚</i>
+                                <div><strong>WhatsApp Бизнес</strong><br><small>+7 (930) 998-82-67</small></div>
+                            </a>
+                        </div>
+                        <p style="margin-top: 16px; font-size: 0.75rem; color: var(--text-muted);">
+                            * Отправляя сообщение, вы даёте согласие на обработку персональных данных.
+                        </p>
+                    </div>
+                    <div class="map-placeholder">
+                        <span>🗺️</span>
+                        <p style="font-size: clamp(0.9rem, 1.8vw, 1rem);">ул. Летчика Ульянина, д.7</p>
+                        <p style="font-size: clamp(0.75rem, 1.4vw, 0.85rem);">офис 524, Москва</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER (ЮРИДИЧЕСКИЙ БЛОК ДЛЯ САМОЗАНЯТОГО) -->
+    <footer>
+        <div class="container">
+            <p>© 2024 Самозанятый Идрисов Б.А., ИНН 050801431603</p>
+            <p class="footer-links">
+                <a href="#privacy" onclick="openPrivacy()">Политика конфиденциальности</a> 
+                <span>|</span>
+                <a href="#offer" onclick="openOffer()">Договор-оферта (условия сотрудничества)</a>
+            </p>
+            <div class="legal-note">
+                <p><strong>⚠️ Внимание:</strong> Я являюсь плательщиком налога на профессиональный доход (самозанятым).</p>
+                <p>Сайт носит информационный характер и не является публичной офертой (ст. 437 ГК РФ). 
+                Услуги оказываются на основании договора гражданско-правового характера (ГПХ) с физическим лицом. 
+                Расчёты производятся в рублях. Чек формируется в приложении ФНС «Мой налог».</p>
+                <p style="margin-top: 8px;">ИНН 050801431603 • Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Плавный скролл к якорям
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === '#privacy' || href === '#offer') return;
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        function openPrivacy() {
+            alert("Политика обработки персональных данных\n\n" +
+                "1. Я, самозанятый Идрисов Б.А. (ИНН 050801431603), обрабатываю персональные данные в соответствии с ФЗ-152.\n" +
+                "2. Сбор данных (имя, телефон, e-mail) осуществляется только с вашего согласия при заполнении форм связи.\n" +
+                "3. Данные используются исключительно для оказания услуг и связи с вами.\n" +
+                "4. Данные не передаются третьим лицам.\n" +
+                "5. Вы можете отозвать согласие, написав на video.kontrol@internet.ru.");
+        }
+
+        function openOffer() {
+            alert("Условия сотрудничества (договор-оферта)\n\n" +
+                "1. Исполнитель – самозанятый Идрисов Б.А., ИНН 050801431603.\n" +
+                "2. Предмет: монтаж, настройка и обслуживание систем видеонаблюдения.\n" +
+                "3. Стоимость работ согласовывается в смете до начала работ.\n" +
+                "4. Оплата: наличный/безналичный расчёт. Выдаётся чек из приложения 'Мой налог'.\n" +
+                "5. Гарантия на выполненные работы – 12 месяцев.\n" +
+                "6. Предоставляем полный пакет документов, включая бухгалтерские закрывающие документы.\n" +
+                "7. Заказчик вправе отказаться от услуг, оплатив фактически понесённые расходы.");
+        }
+
+        console.log('Сайт самозанятого "Видеоконтроль" загружен. ИНН 050801431603, Идрисов Б.А.');
+    </script>
+</body>
+</html>
